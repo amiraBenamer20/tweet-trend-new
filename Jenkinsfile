@@ -1,3 +1,4 @@
+def registry = 'https://code01.jfrog.io/'
 pipeline {
     agent {
         node {
@@ -49,8 +50,7 @@ environment {
        }
        
        //Publish JAR to JFog artifactory
-            def registry = 'https://code01.jfrog.io/'
-         stage("Jar Publish") {
+        stage("Jar Publish") {
         steps {
             script {
                     echo '<--------------- Jar Publish Started --------------->'

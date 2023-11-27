@@ -93,7 +93,7 @@ environment {
                 steps {
                     script {
                        echo '<--------------- Docker Publish Started --------------->'  
-                        docker.withRegistry(registry, 'artifactory_token'){
+                        docker.withRegistry(registry, 'JFrogCred'){
                             app.push()
                         }    
                        echo '<--------------- Docker Publish Ended --------------->'  

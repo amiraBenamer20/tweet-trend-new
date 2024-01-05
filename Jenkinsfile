@@ -84,9 +84,9 @@ pipeline{
         stage("Build image from jar"){
             steps{
                 script{
-                    echo "---start building image---"
-                    app = docker.build(imageName+":"+version)
-                    echo "---finish building image---"
+                    echo '<--------------- Docker Build Started --------------->'
+                   app = docker.build(imageName+":"+version)
+                   echo '<--------------- Docker Build Ends --------------->'
                 }
             }
         }
@@ -94,11 +94,11 @@ pipeline{
         stage("Publish image to JFrog"){
             steps{
                 script{
-                    echo "---start pushing image---"
+                    echo '---start pushing image---'
                     docker.withRegistry(registry, 'JFrog-Cred'){
                         app.push()
                     }
-                    echo "---finish pushing image---"
+                    echo '---finish pushing image---'
                 }
             }
         }

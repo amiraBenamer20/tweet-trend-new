@@ -84,7 +84,7 @@ pipeline{
         stage("Build image from jar"){
             steps{
                 script{
-                    echo '<--------------- Docker Build Started --------------->'
+                   echo '<--------------- Docker Build Started --------------->'
                    app = docker.build(imageName+":"+version)
                    echo '<--------------- Docker Build Ends --------------->'
                 }

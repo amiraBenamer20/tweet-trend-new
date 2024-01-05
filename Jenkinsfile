@@ -95,8 +95,9 @@ pipeline{
             steps{
                 script{
                     echo "---start pushing image---"
-                    docker.withRegistry(registry, 'JFrog-Cred')
-                    app.push()
+                    docker.withRegistry(registry, 'JFrog-Cred'){
+                        app.push()
+                    }
                     echo "---finish pushing image---"
                 }
             }

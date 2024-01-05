@@ -1,4 +1,6 @@
 def registry = 'https://queensland.jfrog.io/'
+def imageName = 'queensland.jfrog.io/project-docker-local/ttrend'
+def version   = '2.1.2'  
 pipeline{
     agent   {
         node    {
@@ -75,6 +77,27 @@ pipeline{
                      server.publishBuildInfo(buildInfo)
                      echo '<--------------- Jar Publish Ended --------------->'  
 
+                }
+            }
+        }
+
+        stage("Build image from jar"){
+            steps{
+                script{
+                    echo "---start building image---"
+                    app = docker.build(imageName+":"+version)
+                    echo "---finish building image---"
+                }
+            }
+        }
+
+        stage("Publish image to JFrog"){
+            steps{
+                script{
+                    echo "---start pushing image---"
+                    docker.withRegistry(registry, 'JFrog-Cred')
+                    app.push()
+                    echo "---finish pushing image---"
                 }
             }
         }

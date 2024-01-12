@@ -102,5 +102,13 @@ pipeline{
                 }
             }
         }
+
+        stage("Deploy on Kubernetes"){
+            steps{
+                script{
+                    sh './deploy.sh'
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: app-web
+  namespace: production-env
+spec:
+  replicas: 1  #how many pods can be acquired by the replicaset (autoscaling group) 
+  selector:
+    matchLabels:
+      app: app-web
+
+  template:
+    metadata:
+      labels:
+        app: app-web
+
+    spec:
+      imagePullSecrets:
+      - name: jfrog-cred
+      containers:
+      - name:  app-web
+        image: queensland.jfrog.io/project-docker-local/ttrend
+        imagePullPolicy: Always
+        ports: 
+        - containerPort: 8000

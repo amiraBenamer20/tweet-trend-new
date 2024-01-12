@@ -106,7 +106,9 @@ pipeline{
         stage("Deploy on Kubernetes"){
             steps{
                 script{
+                    echo '--------------------------Start deploying------------------'
                     sh './deploy.sh'
+                    echo '--------------------------------App is deployed----------------------'
                 }
             }
         }

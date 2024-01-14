@@ -58,7 +58,7 @@ public class RepositoryDetailsController {
 		Map<String, String> trendDetails = new HashMap<String, String>();
 		try {
 			Trends trends = twitter.getPlaceTrends(Integer.parseInt(trendPlace));
-			System.out.println("After API call");
+			System.out.println("After API call when Amira is connecting");
 			int count = 0;
 			for (Trend trend : trends.getTrends()) {
 				if (count < Integer.parseInt(trendCount)) {

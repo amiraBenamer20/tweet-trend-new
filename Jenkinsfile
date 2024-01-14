@@ -103,12 +103,22 @@ pipeline{
             }
         }
 
-        stage("Deploy on Kubernetes"){
+        /*stage("Deploy on Kubernetes"){
             steps{
                 script{
                     echo '--------------------------Start deploying------------------'
                     sh './deploy.sh'
                     echo '--------------------------------App is deployed----------------------'
+                }
+            }
+        }*/
+
+        stage("Deploy on Kubernetes using Helm"){
+            steps{
+                script{
+                    echo '---------------Start deploying using Helm---------------------'
+                    sh 'helm install ttrend trend-new-app-0.1.0.tgz'
+                    echo '---------------Finish deploying-------------------------------'
                 }
             }
         }

@@ -103,7 +103,7 @@ pipeline{
             }
         }
 
-        /*stage("Deploy on Kubernetes"){
+        stage("Deploy on Kubernetes"){
             steps{
                 script{
                     echo '--------------------------Start deploying------------------'
@@ -111,9 +111,9 @@ pipeline{
                     echo '--------------------------------App is deployed----------------------'
                 }
             }
-        }*/
+        }
 
-        stage("Deploy on Kubernetes using Helm"){
+        /*stage("Deploy on Kubernetes using Helm"){
             steps{
                 script{
                     echo '---------------Start deploying using Helm---------------------'
@@ -121,6 +121,6 @@ pipeline{
                     echo '---------------Finish deploying-------------------------------'
                 }
             }
-        }
+        }*/
     }
 }
